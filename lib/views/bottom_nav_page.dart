@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/constants/app_colors.dart';
 import 'package:flutter_todo_app/views/calander_page.dart';
+import 'package:flutter_todo_app/views/target_form.dart';
 
 import 'home_page.dart';
 
@@ -15,9 +16,9 @@ class BottomNavPage extends StatefulWidget {
 class _BottomNavPageState extends State<BottomNavPage> {
   int _currentIndex = 0;
 
-  List<Widget> _pages = [
+  final List<Widget> _pages = [
     HomePage(),
-    CalendarPage(),
+    const CalendarPage(),
   ];
 
   @override
@@ -60,12 +61,16 @@ class _BottomNavPageState extends State<BottomNavPage> {
           color: AppColors.whiteColor,
         ),
         onPressed: () {
-          // showModalBottomSheet(
-          //   context: context,
-          //   builder: (cxt) {
-          //     return const TargetForm();
-          //   },
-          // );
+          showModalBottomSheet(
+            context: context,
+            builder: (cxt) {
+              return TargetForm(
+                onSave: () {
+                  setState(() {});
+                },
+              );
+            },
+          );
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
