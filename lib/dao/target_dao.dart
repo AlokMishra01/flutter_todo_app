@@ -1,5 +1,5 @@
-import 'package:flutter_todo_app/database/database_service.dart';
-import 'package:flutter_todo_app/model/target_models.dart';
+import '../database/database_service.dart';
+import '../model/target_models.dart';
 
 class TargetDao {
   final dbService = DatabaseService.db;

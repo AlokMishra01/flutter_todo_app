@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter_todo_app/model/target_models.dart';
-import 'package:flutter_todo_app/repository/target_repository.dart';
+import '../model/target_models.dart';
+import '../repository/target_repository.dart';
 
 class TargetBloc {
   //Get instance of the Repository

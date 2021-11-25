@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:path/path.dart';
@@ -20,15 +21,39 @@ class DatabaseService {
     String path = join(documentsDirectory.path, "Todo.db");
     var database = await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: initDB,
       onUpgrade: onUpgrade,
     );
     return database;
   }
 
-  void onUpgrade(Database database, int oldVersion, int newVersion) {
-    if (newVersion > oldVersion) {}
+  Future<void> onUpgrade(
+    Database database,
+    int oldVersion,
+    int newVersion,
+  ) async {
+    if (newVersion == 2) {
+      await database.execute(
+        "CREATE TABLE Profile ("
+        "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+        "name TEXT, "
+        "image TEXT "
+        ")",
+      );
+      log('Profile Table created.');
+      await database.execute(
+        "CREATE TABLE Task ("
+        "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+        "targetId INTEGER, "
+        "title TEXT, "
+        "start TEXT, "
+        "finish TEXT, "
+        "isFinished INTEGER "
+        ")",
+      );
+      log('Profile Task created.');
+    }
   }
 
   void initDB(Database database, int version) async {

@@ -1,5 +1,5 @@
-import 'package:flutter_todo_app/dao/target_dao.dart';
-import 'package:flutter_todo_app/model/target_models.dart';
+import '../dao/target_dao.dart';
+import '../model/target_models.dart';
 
 class TargetRepository {
   final targetDao = TargetDao();
