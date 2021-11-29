@@ -22,7 +22,7 @@ class TaskModel {
       title: data['title'],
       start: data['start'],
       finish: data['finish'],
-      isFinished: data['isFinished'],
+      isFinished: data['isFinished'] == 0 ? false : true,
     );
   }
 
